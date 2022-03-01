@@ -38,11 +38,11 @@ find_library( # Sets the name of the path variable.
 
 add_library(spdlog STATIC IMPORTED)
 set_target_properties(spdlog PROPERTIES IMPORTED_LOCATION
- /Users/lida/Projects/rpo2022/libs/spdlog/build/x86/libspdlog.a)
+ /Users/lida/Projects/rpo2022/libs/spdlog/build/${ANDROID_ABI}/libspdlog.a)
 
 add_library(mbedcrypto SHARED IMPORTED)
 set_target_properties(mbedcrypto PROPERTIES IMPORTED_LOCATION
- /Users/lida/Projects/rpo2022/libs/mbedtls/build/x86/library/libmbedcrypto.so)
+ /Users/lida/Projects/rpo2022/libs/mbedtls/build/${ANDROID_ABI}/library/libmbedcrypto.so)
 
 target_include_directories(fclient PUBLIC
  /Users/lida/Projects/rpo2022/libs/spdlog/spdlog/include
