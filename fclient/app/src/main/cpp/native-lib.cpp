@@ -28,9 +28,11 @@ Java_ru_iu3_fclient_MainActivity_stringFromJNI(
 }
 
 extern "C" JNIEXPORT jint JNICALL
-Java_ru_iu3_fclient_MainActivity_initRng(JNIEnv *env, jclass clazz) {
+Java_ru_iu3_fclient_MainActivity_initRing(JNIEnv *env,
+                                          jobject thiz) {
     mbedtls_entropy_init( &entropy );
     mbedtls_ctr_drbg_init( &ctr_drbg );
+
     return mbedtls_ctr_drbg_seed( &ctr_drbg , mbedtls_entropy_func, &entropy,
                                   (const unsigned char *) personalization,
                                   strlen( personalization ) );
