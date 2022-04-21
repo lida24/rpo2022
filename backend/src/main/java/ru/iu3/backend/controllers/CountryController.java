@@ -14,7 +14,7 @@ import java.util.*;
 
 /**
  * Класс-контроллер таблицы "стран"
- * @author artem
+ * @author kostya
  */
 @RestController
 @RequestMapping("api/v1")

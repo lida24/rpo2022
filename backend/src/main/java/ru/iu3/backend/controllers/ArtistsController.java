@@ -14,7 +14,7 @@ import java.util.*;
 
 /**
  * Метод, который отражает логику работы таблицы артистов
- * @author artem
+ * @author kostya
  */
 @RestController
 @RequestMapping("api/v1")

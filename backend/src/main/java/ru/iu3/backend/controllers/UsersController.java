@@ -6,7 +6,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import ru.iu3.backend.models.Museum;
-import ru.iu3.backend.models.User;
+import ru.iu3.backend.models.Users;
 import ru.iu3.backend.repositories.MuseumRepository;
 import ru.iu3.backend.repositories.UserRepository;
 
@@ -14,7 +14,7 @@ import java.util.*;
 
 /**
  * Класс - контроллер пользователя
- * @author artem
+ * @author kostya
  */
 @RestController
 @RequestMapping("api/v1")
@@ -42,9 +42,9 @@ public class UsersController {
      * @throws Exception - обязательное требование
      */
     @PostMapping("/users")
-    public ResponseEntity<Object> createUsers(@RequestBody User users) throws Exception {
+    public ResponseEntity<Object> createUsers(@RequestBody Users users) throws Exception {
         try {
-            User nc = usersRepository.save(users);
+            Users nc = usersRepository.save(users);
             return new ResponseEntity<Object>(nc, HttpStatus.OK);
         } catch (Exception exception) {
             // Указываем тип ошибки
@@ -72,11 +72,11 @@ public class UsersController {
     public ResponseEntity<Object> addMuseums(@PathVariable(value = "id") Long userID,
                                              @Validated @RequestBody Set<Museum> museums) {
         // Извлекаем пользователя по конкретному ID-шнику
-        Optional<User> uu = usersRepository.findById(userID);
+        Optional<Users> uu = usersRepository.findById(userID);
         int cnt = 0;
 
         if (uu.isPresent()) {
-            User u = uu.get();
+            Users u = uu.get();
 
             // Если музеев несколько (а такое может быть вполне, то тогда добавляем их поочерёдно)
             for(Museum m: museums) {
@@ -108,11 +108,11 @@ public class UsersController {
     @PostMapping("/users/{id}/removemuseums")
     public ResponseEntity<Object> removeMuseums(@PathVariable(value = "id") Long userId,
                                                 @Validated @RequestBody Set<Museum> museums) {
-        Optional<User> uu = usersRepository.findById(userId);
+        Optional<Users> uu = usersRepository.findById(userId);
         int cnt = 0;
 
         if (uu.isPresent()) {
-            User u = uu.get();
+            Users u = uu.get();
             for (Museum m: museums) {
                 u.removeMuseum(m);
                 ++cnt;
@@ -135,10 +135,10 @@ public class UsersController {
      * @return - хедер, где будет содержаться ответ по данному пользователю
      */
     @PutMapping("/users/{id}")
-    public ResponseEntity<User> updateUsers(@PathVariable(value = "id") Long userId,
-                                            @RequestBody User userDetails) {
-        User user = null;
-        Optional<User> uu = usersRepository.findById(userId);
+    public ResponseEntity<Users> updateUsers(@PathVariable(value = "id") Long userId,
+                                             @RequestBody Users userDetails) {
+        Users user = null;
+        Optional<Users> uu = usersRepository.findById(userId);
         if (uu.isPresent()) {
             // Заполняем пользовательские данные
             user = uu.get();
@@ -159,7 +159,7 @@ public class UsersController {
      */
     @DeleteMapping("/users/{id}")
     public ResponseEntity<Object> deleteUsers(@PathVariable(value = "id") Long userId) {
-        Optional<User> users = usersRepository.findById(userId);
+        Optional<Users> users = usersRepository.findById(userId);
         Map<String, Boolean> resp = new HashMap<>();
 
         // Возвратит true, если объект существует (не пустой)

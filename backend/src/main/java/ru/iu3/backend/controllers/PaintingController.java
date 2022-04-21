@@ -1,5 +1,4 @@
 package ru.iu3.backend.controllers;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,14 +8,11 @@ import ru.iu3.backend.models.Painting;
 import ru.iu3.backend.repositories.MuseumRepository;
 import ru.iu3.backend.repositories.PaintingRepository;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 /**
  * Класс - контроллер картин
- * @author artem
+ * @author kostya
  */
 @RestController
 @RequestMapping("api/v1")

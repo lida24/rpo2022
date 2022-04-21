@@ -13,7 +13,7 @@ import java.util.*;
 
 /**
  * Класс - контроллер музея
- * @author artem
+ * @author kostya
  */
 @RestController
 @RequestMapping("api/v1")

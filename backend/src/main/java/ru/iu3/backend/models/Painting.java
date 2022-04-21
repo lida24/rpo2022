@@ -7,7 +7,7 @@ import javax.persistence.*;
 @Access(AccessType.FIELD)
 /**
  * Класс - модель картин
- * @author artem
+ * @author kostya
  */
 public class Painting {
     // Поле ID - является первичным ключом

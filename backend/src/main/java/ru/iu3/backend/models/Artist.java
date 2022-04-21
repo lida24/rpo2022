@@ -1,5 +1,4 @@
 package ru.iu3.backend.models;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
@@ -9,7 +8,7 @@ import java.util.List;
 /**
  * Класс-модель, описывающая артистов
  *
- * @author artem
+ * @author kostya
  */
 @Entity
 @Table(name = "artists")

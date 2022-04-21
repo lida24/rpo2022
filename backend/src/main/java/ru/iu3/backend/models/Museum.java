@@ -9,7 +9,7 @@ import java.util.Set;
 
 /**
  * Класс - модель музея
- * @author artem
+ * @author kostya
  */
 @Entity
 @Table(name = "museums")
@@ -38,7 +38,7 @@ public class Museum {
     @JsonIgnore
     @ManyToMany
     @JoinTable(name = "usersmuseums", joinColumns = @JoinColumn(name = "museumid"), inverseJoinColumns = @JoinColumn(name = "userid"))
-    public Set<User> users = new HashSet<>();
+    public Set<Users> users = new HashSet<>();
 
     // Создаём конструктор
     public Museum() {

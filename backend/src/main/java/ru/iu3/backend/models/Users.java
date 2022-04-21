@@ -1,5 +1,4 @@
 package ru.iu3.backend.models;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
@@ -9,12 +8,12 @@ import java.util.Set;
 
 /**
  * Класс, который использует пользователь
- * @author artem
+ * @author kostya
  */
 @Entity
 @Table(name = "users")
 @Access(AccessType.FIELD)
-public class User {
+public class Users {
     // ID - первинчый ключ
     @Id
     @Column(name = "id", updatable = false, nullable = false)
@@ -54,13 +53,13 @@ public class User {
     @ManyToMany(mappedBy = "users")
     public Set<Museum> museums = new HashSet<>();
 
-    public User() {}
+    public Users() {}
 
     /**
      * Конструктор, который принимает в себя ID
      * @param id - ID пользователя
      */
-    public User(Long id) {
+    public Users(Long id) {
         this.id = id;
     }
 
