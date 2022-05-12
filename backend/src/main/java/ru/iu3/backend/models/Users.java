@@ -29,6 +29,9 @@ public class Users {
     @Column(name = "password")
     public String password;
 
+    @Transient
+    public String np;
+
     // Поле - электронная почта
     @Column(name = "email")
     public String email;
